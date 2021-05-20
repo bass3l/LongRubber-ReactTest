@@ -1,46 +1,83 @@
-import React from 'react';
-import Rate from './Rate';
-import imageHolder from './../assets/images/image-holder.png';
+import React from "react";
+import Rate from "./Rate";
+import { Link } from "react-router-dom";
 
-export default function RestaurantCard(){
+export default function RestaurantCard(restaurant) {
+  let rest = restaurant.restaurant;
+
   return (
     <div style={styles.container}>
-      <div>
-        <img alt="restaurant-image" src={imageHolder} style={styles.image} />
-      </div>
-      <p style={{ ...styles.title, ...styles.noMargin }}>Keika Ramen</p>
-      <p style={styles.noMargin}>Classic • Japan</p>
-      <div style={styles.footer}>
-        <Rate style={styles.rate} />
-        <p>Open Now</p>
-      </div>
+      <Link
+        style={styles.link}
+        to={{
+          pathname: `/menu/${rest.id}`,
+          state: { restaurantId: rest.id },
+        }}
+      >
+        <img
+          alt={"restaurant-image" + rest.id}
+          src={rest.images[0]}
+          style={styles.image}
+        />
+
+        <p style={{ ...styles.title }}>{rest.name}</p>
+        <p style={styles.noMargin}>{rest.cuisine}</p>
+        <div style={styles.footer}>
+          <div style={styles.footer}>
+            <Rate key={rest.id} style={styles.rate} rate={rest.rate} />
+            <p style={styles.reviews}>88</p>
+          </div>
+
+          <p>{rest.status}</p>
+        </div>
+      </Link>
     </div>
   );
 }
 
 const styles = {
   container: {
-    background: '#FFFFFF 0 % 0 % no - repeat padding - box',
-    boxShadow: '0px 8px 7px #00000012',
-    borderRadius: '15px',
-    padding: 12
+    background: "#FFFFFF",
+    boxShadow: "0px 8px 7px #00000012",
+    borderRadius: "5px",
+    padding: "10px",
+    width: "16rem",
   },
   image: {
-    width: '100%',
-    height: 240,
-    objectFit: 'cover'
+    width: "16rem",
+    height: "10rem",
+    objectFit: "cover",
+    borderRadius: "5px",
+  },
+  link: {
+    textDecoration: "none",
+    lineHeight: "1.5rem",
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    fontFamily: "Poppins",
+    color: "#1F1F1F",
+    fontSize: "14px",
   },
   noMargin: {
-    margin: 0
+    margin: 0,
+    fontSize: "12px",
+    color: "#1F1F1F",
+    fontWeight: "400",
+  },
+  reviews: {
+    margin: 0,
+    fontSize: "12px",
+    color: "#1F1F1F",
+    fontWeight: "600",
+    paddingLeft: "5px",
   },
   footer: {
-    display: 'flex',
-    justifyContent: 'space-between'
+    fontWeight: "bold",
+    display: "flex",
+    justifyContent: "space-between",
+    fontSize: "12px",
+    color: "#FF7010",
   },
-  rate: {
-    
-  }
+  rate: {},
 };
