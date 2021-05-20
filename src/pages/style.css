@@ -1,0 +1,35 @@
+button.signbtn:hover {
+  cursor: pointer !important;
+  background: darkgray;
+}
+.input:hover {
+  border: 2px solid #ff7010 !important;
+}
+input.form-control {
+  border-radius: 29px !important;
+}
+
+input.form-control {
+  width: 370px !important;
+  height: 50px !important;
+}
+.react-tel-input {
+  height: 50px !important;
+  text-align: center;
+}
+.flag-dropdown {
+  border-radius: 29px 0px 0px 29px !important;
+  left: 19px !important;
+}
+
+.selected-flag {
+  border-radius: 29px 0px 0px 29px !important;
+}
+ul.country-list {
+  text-align: left;
+}
+button #Addbtn:hover {
+  background-color: #ff7010;
+  color: white;
+  border: 1px solid white;
+}
